@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: 'postgres:17'
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: mscliente
+      POSTGRES_USER: tabango
+      POSTGRES_PASSWORD: Vaeceqd20.
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - my_network
+
+  ms-cliente:
+    build: .
+    container_name: ms-cliente-app
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_db:5432/mscliente
+      SPRING_DATASOURCE_USERNAME: tabango
+      SPRING_DATASOURCE_PASSWORD: Vaeceqd20.
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+    ports:
+      - "8080:8080"
+    networks:
+      - my_network
+
+volumes:
+  postgres_data:
+
+networks:
+  my_network:
+    external: true

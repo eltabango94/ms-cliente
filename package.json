@@ -1,0 +1,28 @@
+URL POST http://localhost:8080/clientes
+{
+"nombre": "Juan Perez",
+"genero": "MASCULINO",
+"edad": 30,
+"identificacion": "12222567490",
+"direccion": "Calle Principal 123",
+"telefono": "0987654321",
+"clienteId": "123",
+"contrasenia": "password123",
+"estado": true
+}
+
+URL POST http://localhost:8080/clientes/1
+
+{
+"nombre": "Juan Perez",
+"genero": "Masculino",
+"edad": 33,
+"identificacion": "1234567890",
+"direccion": "Calle Secundaria 456",
+"telefono": "0987654322",
+"clienteId": "1001",
+"contrasenia": "newpassword123",
+"estado": true
+}
+
+URL GET http://localhost:8080/clientes/1
